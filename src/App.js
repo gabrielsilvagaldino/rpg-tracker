@@ -1,8 +1,11 @@
+import { Route, Routes } from "react-router";
+import MainPage from './pages/MainPage';
+
 function App() {
   return (
-    <div>
-      Olá mundo!
-    </div>
+    <Routes>
+      <Route path='/' Component={ MainPage }/>
+    </Routes>
   );
 }
 
