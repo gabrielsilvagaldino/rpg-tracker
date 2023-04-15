@@ -1,21 +1,35 @@
+import { useContext } from "react";
+import AppContext from "../context/AppContext";
+
 function Form() {
+  const {
+    name, 
+    setName,
+    initiative,
+    setInitiative,
+    armor,
+    setArmor,
+    health,
+    setHealth
+  } = useContext(AppContext);
+
   return (
     <form>
       <label htmlFor="name">
         Nome
-        <input id="name" type="text" />
+        <input id="name" value={ name } onChange={(e) => setName(e.target.value)} type="text" />
       </label>
       <label htmlFor="initiative">
         Iniciativa
-        <input id="initiative" type="number" />
+        <input id="initiative" value={ initiative } onChange={(e) => setInitiative(e.target.value)}  type="number" />
       </label>
       <label htmlFor="armor">
         Armadura
-        <input id="armor" type="number" />
+        <input id="armor" value={ armor } onChange={(e) => setArmor(e.target.value)}  type="number" />
       </label>
       <label htmlFor="health">
         Vida Máx.
-        <input id="health" type="number" />
+        <input id="health" value={ health } onChange={(e) => setHealth(e.target.value)}  type="number" />
       </label>
       <button type="submit">
         Criar
