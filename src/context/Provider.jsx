@@ -10,6 +10,33 @@ function Provider({ children }) {
   const [armor, setArmor] = useState(0);
   const [health, setHealth] = useState(0);
 
+  const [array, setArray] = useState([])
+
+  const formOnClick = () => {
+    const obj = {
+      id: Math.random(),
+      name,
+      initiative,
+      armor,
+      health,
+      atualHealth: health,
+      image: './default-image.png'
+    }
+    setArray([...array, obj ])
+  }
+
+  const increaseButton = (index) => {
+    array[index].atualHealth += 1
+    console.log(array);
+    setArray(array)
+  }
+
+  const decreaseButton = (index) => {
+    array[index].atualHealth -= 1 
+    console.log(array);
+    setArray(array)
+  }
+
   const context = useMemo(() => ({
     update,
     setUpdate,
@@ -21,6 +48,10 @@ function Provider({ children }) {
     setArmor,
     health,
     setHealth,
+    increaseButton,
+    decreaseButton,
+    formOnClick,
+    array,
   }), [
     update,
     setUpdate,
@@ -32,6 +63,10 @@ function Provider({ children }) {
     setArmor,
     health,
     setHealth,
+    increaseButton,
+    decreaseButton,
+    formOnClick,
+    array,
   ]);
 
   return (
