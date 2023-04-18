@@ -2,11 +2,11 @@ import { useContext, useState } from "react";
 import AppContext from "../context/AppContext";
 
 function NpcCard(props) {
-  const { increaseButton, decreaseButton, array } = useContext(AppContext);
-  const { index } = props;
+  const { increaseButton, decreaseButton } = useContext(AppContext);
+  const { array, index } = props;
   return (
     <div>
-      <img src={ array[index].image } alt="custom-image" />
+      <img src={ array.image } alt="custom-image" />
       <table>
         <thead>
           <tr>
@@ -18,14 +18,14 @@ function NpcCard(props) {
           </tr>
         </thead>
         <tbody>
-          <th>{ array[index].initiative }</th>
-          <th>{ array[index].armor }</th>
-          <button type="button" onClick={ increaseButton }>
+          <th>{ array.initiative }</th>
+          <th>{ array.armor }</th>
+          <button type="button" onClick={ () => increaseButton(index) }>
             +
           </button>
-          <th>{ array[index].atualHealth }</th>
-          <th>{ array[index].health }</th>
-          <button type="button"  onClick={ decreaseButton }>
+          <th>{ array.atualHealth }</th>
+          <th>{ array.health }</th>
+          <button type="button"  onClick={ () => decreaseButton(index) }>
             -
           </button>
           <button>X</button>

@@ -26,12 +26,14 @@ function Provider({ children }) {
   }
 
   const increaseButton = (index) => {
-    array[index].health += 1
+    array[index].atualHealth += 1
+    console.log(array);
     setArray(array)
   }
 
   const decreaseButton = (index) => {
-    array[index].health -= 1 
+    array[index].atualHealth -= 1 
+    console.log(array);
     setArray(array)
   }
 
@@ -49,6 +51,7 @@ function Provider({ children }) {
     increaseButton,
     decreaseButton,
     formOnClick,
+    array,
   }), [
     update,
     setUpdate,
@@ -63,6 +66,7 @@ function Provider({ children }) {
     increaseButton,
     decreaseButton,
     formOnClick,
+    array,
   ]);
 
   return (
