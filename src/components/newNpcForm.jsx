@@ -10,7 +10,8 @@ function Form() {
     armor,
     setArmor,
     health,
-    setHealth
+    setHealth,
+    formOnClick,
   } = useContext(AppContext);
 
   return (
@@ -31,7 +32,7 @@ function Form() {
         Vida Máx.
         <input id="health" value={ health } onChange={(e) => setHealth(e.target.value)}  type="number" />
       </label>
-      <button type="submit">
+      <button type="button" onClick={ formOnClick }>
         Criar
       </button>
     </form>

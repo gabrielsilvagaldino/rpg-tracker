@@ -1,6 +1,12 @@
-function NpcCard() {
+import { useContext, useState } from "react";
+import AppContext from "../context/AppContext";
+
+function NpcCard(props) {
+  const { increaseButton, decreaseButton, array } = useContext(AppContext);
+  const { index } = props;
   return (
     <div>
+      <img src={ array[index].image } alt="custom-image" />
       <table>
         <thead>
           <tr>
@@ -12,14 +18,14 @@ function NpcCard() {
           </tr>
         </thead>
         <tbody>
-          <th>11</th>
-          <th>12</th>
-          <button type="button">
+          <th>{ array[index].initiative }</th>
+          <th>{ array[index].armor }</th>
+          <button type="button" onClick={ increaseButton }>
             +
           </button>
-          <th>13</th>
-          <th>15</th>
-          <button type="button">
+          <th>{ array[index].atualHealth }</th>
+          <th>{ array[index].health }</th>
+          <button type="button"  onClick={ decreaseButton }>
             -
           </button>
           <button>X</button>
