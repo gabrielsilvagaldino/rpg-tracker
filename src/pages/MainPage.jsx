@@ -31,7 +31,7 @@ function MainPage() {
             <Header />
             <Form />
             { characters.length === 0  ? <div>Nenhum item encontrado</div> : characters.map((item, index) => (
-              <NpcCard key={ item.id } index={ index } array={ item } />
+              <NpcCard key={ item.id } index={ index } character={ item } />
             )) }
           </body>
         )
