@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import AppContext from "../context/AppContext";
 
 function NpcCard(props) {
-  const { increaseButton, decreaseButton } = useContext(AppContext);
+  const { increaseButton, decreaseButton, removeButton, setInput, input } = useContext(AppContext);
   const { array, index } = props;
   return (
     <div>
@@ -28,7 +28,10 @@ function NpcCard(props) {
           <button type="button"  onClick={ () => decreaseButton(index) }>
             -
           </button>
-          <button>X</button>
+          <label htmlFor="increaseOrDecrease">
+            <input id="increaseOrDecrease" type="number" value={ input } onChange={ (e) => setInput(e.target.value) }/>
+          </label>
+          <button type="button" onClick={ () => removeButton(array.id) }>X</button>
         </tbody>
       </table>
     </div>
