@@ -5,16 +5,23 @@ import NpcCard from "../components/npcCard";
 import Form from "../components/newNpcForm";
 
 function MainPage() {
-  const { array } = useContext(AppContext);
+  const { array, setUpdate, update } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(false)
+  const [characters, setCharacters] = useState([])
 
   useEffect(() => {
+    setCharacters(array)
+  }, [update])
+
+  useEffect(() => {
+    setUpdate(update + 1)
     const timer1 = setTimeout(() => setIsLoading(true), 500);
     
     return () => {
       clearTimeout(timer1);
     };
   }, [])
+
 
   return (
     <main>
@@ -23,7 +30,7 @@ function MainPage() {
           <body>
             <Header />
             <Form />
-            { array.length === 0  ? <div>Nenhum item encontrado</div> : array.map((item, index) => (
+            { characters.length === 0  ? <div>Nenhum item encontrado</div> : characters.map((item, index) => (
               <NpcCard key={ item.id } index={ index } array={ item } />
             )) }
           </body>

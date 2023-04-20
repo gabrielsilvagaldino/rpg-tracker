@@ -10,7 +10,9 @@ function Provider({ children }) {
   const [armor, setArmor] = useState(0);
   const [health, setHealth] = useState(0);
 
-  const [array, setArray] = useState([])
+  const [input, setInput] = useState(1);
+
+  const [array, setArray] = useState([]);
 
   const formOnClick = () => {
     const obj = {
@@ -19,26 +21,51 @@ function Provider({ children }) {
       initiative,
       armor,
       health,
-      atualHealth: health,
+      atualHealth: Number(health),
       image: './default-image.png'
     }
     setArray([...array, obj ])
+    setUpdate(update + 1)
   }
 
   const increaseButton = (index) => {
-    array[index].atualHealth += 1
-    console.log(array);
+    if (input === 0 || !input) {
+      setInput(1)
+      array[index].atualHealth += 1 
+      console.log(array);
+      setArray(array)
+      return setUpdate(update + 1)
+    }
+
+    array[index].atualHealth += Number(input)
     setArray(array)
+    setUpdate(update + 1)
   }
 
   const decreaseButton = (index) => {
-    array[index].atualHealth -= 1 
-    console.log(array);
+    if (input === 0 || !input) {
+      setInput(1)
+      array[index].atualHealth -= 1 
+      console.log(array);
+      setArray(array)
+      return setUpdate(update + 1)
+    }
+
+    array[index].atualHealth -= Number(input)
     setArray(array)
+    setUpdate(update + 1)
+  }
+
+  const removeButton = (id) => {
+    const newArray = array.filter((e) => e.id !== id)
+    setArray(newArray)
+    setUpdate(update + 1)
   }
 
   const context = useMemo(() => ({
     update,
+    input,
+    setInput,
     setUpdate,
     name,
     setName,
@@ -50,6 +77,7 @@ function Provider({ children }) {
     setHealth,
     increaseButton,
     decreaseButton,
+    removeButton,
     formOnClick,
     array,
   }), [
@@ -65,6 +93,7 @@ function Provider({ children }) {
     setHealth,
     increaseButton,
     decreaseButton,
+    removeButton,
     formOnClick,
     array,
   ]);
