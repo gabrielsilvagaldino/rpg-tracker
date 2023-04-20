@@ -6,13 +6,18 @@ function Provider({ children }) {
   const [update, setUpdate] = useState(0);
 
   const [name, setName] = useState('');
-  const [initiative, setInitiative] = useState(0);
-  const [armor, setArmor] = useState(0);
-  const [health, setHealth] = useState(0);
-
-  const [input, setInput] = useState(1);
+  const [initiative, setInitiative] = useState();
+  const [armor, setArmor] = useState();
+  const [health, setHealth] = useState();
 
   const [array, setArray] = useState([]);
+
+  const resetForm = () => {
+    setName('');
+    setInitiative('');
+    setArmor('');
+    setHealth('');
+  }
 
   const formOnClick = () => {
     const obj = {
@@ -25,6 +30,7 @@ function Provider({ children }) {
       image: './default-image.png'
     }
     setArray([...array, obj ])
+    resetForm();
     setUpdate(update + 1)
   }
 
@@ -64,8 +70,6 @@ function Provider({ children }) {
 
   const context = useMemo(() => ({
     update,
-    input,
-    setInput,
     setUpdate,
     name,
     setName,
@@ -80,6 +84,7 @@ function Provider({ children }) {
     removeButton,
     formOnClick,
     array,
+    setArray,
   }), [
     update,
     setUpdate,
@@ -96,6 +101,7 @@ function Provider({ children }) {
     removeButton,
     formOnClick,
     array,
+    setArray,
   ]);
 
   return (
