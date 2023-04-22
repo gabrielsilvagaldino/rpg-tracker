@@ -1,10 +1,14 @@
+import { useContext } from "react";
+import AppContext from "../context/AppContext";
+
 function Header() {
+  const { darkMode, darkModeButton } = useContext(AppContext); 
   return (
     <header>
       <nav>
-        <a href="/config" > CONFIGURATION </a>
-        <a href="/npcs" > NPCS </a>
-        <a href="/players" > PLAYERS </a>
+        <button type="button" onClick={darkModeButton} >
+          <img width='40' src={ darkMode ? '/sunIcon.png' :  '/moonIcon.png' } alt="" />
+        </button>
       </nav>
     </header>
   );

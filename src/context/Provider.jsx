@@ -4,6 +4,7 @@ import AppContext from './AppContext';
 
 function Provider({ children }) {
   const [update, setUpdate] = useState(0);
+  const [darkMode, setDarkMode] = useState(false);
 
   const [name, setName] = useState('');
   const [initiative, setInitiative] = useState();
@@ -17,6 +18,17 @@ function Provider({ children }) {
     setInitiative('');
     setArmor('');
     setHealth('');
+  }
+
+  const darkModeButton = () => {
+    if (darkMode === false) {
+      document.body.style.backgroundColor = 'rgb(49,51,56)'
+      document.body.style.color = 'white'
+      return setDarkMode(true)
+    }
+    document.body.style.backgroundColor = 'white'
+    document.body.style.color = 'black'
+    return setDarkMode(false)
   }
 
   const formOnClick = () => {
@@ -69,6 +81,8 @@ function Provider({ children }) {
   }
 
   const context = useMemo(() => ({
+    darkMode,
+    darkModeButton,
     update,
     setUpdate,
     name,
@@ -86,6 +100,8 @@ function Provider({ children }) {
     array,
     setArray,
   }), [
+    darkMode,
+    darkModeButton,
     update,
     setUpdate,
     name,
