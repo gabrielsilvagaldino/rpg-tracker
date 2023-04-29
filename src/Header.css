@@ -1,0 +1,90 @@
+* {
+  border: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+@keyframes dark-mode-button-on {
+  0% {
+    transform: translateX(0px);
+  }
+
+  100% {
+    transform: translateX(20px);
+  }
+}
+
+@keyframes dark-mode-button-off {
+  0% {
+    transform: translateX(20px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+#ball-idle {
+  background: red;
+  border-radius: 50%;
+  height: 20px;
+  right: 50px;
+  position:fixed;
+  top: 20px;
+  width: 20px;
+  z-index: 1;
+}
+
+#ball-on {
+  animation: dark-mode-button-on 0.3s forwards;
+  background: green;
+  border-radius: 50%;
+  height: 20px;
+  right: 50px;
+  position: fixed;
+  top: 20px;
+  width: 20px;
+  z-index: 1;
+}
+
+#ball-off {
+  animation: dark-mode-button-off 0.3s forwards;
+  background: white;
+  border-radius: 50%;
+  height: 20px;
+  right: 50px;
+  position: fixed;
+  top: 20px;
+  width: 20px;
+  z-index: 1;
+}
+
+#pill {
+  border-radius: 18px;
+  position: absolute;
+  width: 50px;
+  height: 29px;
+  right: 25px;
+  top: 15.5px;
+  background-color: darkslategrey;
+}
+
+
+#container {
+  background-color: white;
+  margin: 0;
+}
+
+#button {
+  z-index: 2;
+  border-radius: 50%;
+  width: 50px;
+  height: 29px;
+  right: 25px;
+  top: 15.5px;
+  position: absolute;
+  cursor: pointer;
+  opacity: 0%;
+}

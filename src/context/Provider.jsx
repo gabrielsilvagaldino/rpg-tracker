@@ -5,6 +5,7 @@ import AppContext from './AppContext';
 function Provider({ children }) {
   const [update, setUpdate] = useState(0);
   const [darkMode, setDarkMode] = useState(false);
+  const [teste, setTeste] = useState('ball-idle')
 
   const [name, setName] = useState('');
   const [initiative, setInitiative] = useState();
@@ -24,8 +25,10 @@ function Provider({ children }) {
     if (darkMode === false) {
       document.body.style.backgroundColor = 'rgb(49,51,56)'
       document.body.style.color = 'white'
+      setTeste('ball-on')
       return setDarkMode(true)
     }
+    setTeste('ball-off')
     document.body.style.backgroundColor = 'white'
     document.body.style.color = 'black'
     return setDarkMode(false)
@@ -81,6 +84,7 @@ function Provider({ children }) {
   }
 
   const context = useMemo(() => ({
+    teste,
     darkMode,
     darkModeButton,
     update,
@@ -100,6 +104,7 @@ function Provider({ children }) {
     array,
     setArray,
   }), [
+    teste,
     darkMode,
     darkModeButton,
     update,
